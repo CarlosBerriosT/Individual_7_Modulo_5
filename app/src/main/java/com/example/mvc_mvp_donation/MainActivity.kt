@@ -1,23 +1,19 @@
 package com.example.mvc_mvp_donation
 
-import android.annotation.SuppressLint
+import DonationPresenter
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mvc_mvp_donation.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(),IViewPresenter{
+interface IViewPresenter {
 
+}
+
+class MainActivity : AppCompatActivity(), IViewPresenter {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var controller: Controller
+    private lateinit var presenter: DonationPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,54 +21,33 @@ class MainActivity : AppCompatActivity(),IViewPresenter{
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        presenter = DonationPresenter(this)
 
-        // inicializamos controller
-
-        controller = Controller()
-
-        binding.button.setOnClickListener{makeDonation()}
-
-
-    }
-    @SuppressLint("StringFormatInvalid")
-    private  fun makeDonation(){
-        val donation = controller.saveDonation(binding.tvDonation.text.toString())
-        if(donation) {
-
-            val totalDonation = controller.totalDonation()
-            // recibo el total de las donaciones
-            val total= getString(R.string.total_donaciones,totalDonation.toString())
-            binding.tvTotal.text= total
-            val toast = Toast.makeText(applicationContext, "Donación exitosa", Toast.LENGTH_LONG)
-            toast.show()
-
-        }
-        else{
-
-            val toast1 = Toast.makeText(
-                applicationContext, "Donación Fallida",
-                Toast.LENGTH_LONG)
-            toast1.show()
-        }
-
-
+        binding.btnVerSaldo.setOnClickListener { presenter.viewBalance() }
+        binding.btnIngresarDinero.setOnClickListener { depositMoney() }
+        binding.btnSacarDinero.setOnClickListener { withdrawMoney() }
+        binding.btnSalir.setOnClickListener { finish() }
     }
 
-    override fun updateTotalDonation(totalAmount: Int) {
-        TODO("Not yet implemented")
+    private fun depositMoney() {
+        val amount = binding.etAmount.text.toString()
+        presenter.deposit(amount)
     }
 
-    override fun displayConfirmationMessage() {
-        TODO("Not yet implemented")
+    private fun withdrawMoney() {
+        val amount = binding.etAmount.text.toString()
+        presenter.withdraw(amount)
     }
 
-    override fun displayErrorMessage() {
-        TODO("Not yet implemented")
+    fun updateTotalDonation(totalAmount: Int) {
+        binding.tvBalance.text = getString(R.string.balance, totalAmount.toString())
     }
 
-    override fun displayColorAlert(color: String) {
-        TODO("Not yet implemented")
+    fun displayConfirmationMessage() {
+        Toast.makeText(this, "Operación exitosa", Toast.LENGTH_SHORT).show()
     }
 
-
+    fun displayErrorMessage() {
+        Toast.makeText(this, "Operación fallida", Toast.LENGTH_SHORT).show()
+    }
 }

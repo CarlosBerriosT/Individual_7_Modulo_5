@@ -1,27 +1,23 @@
-package com.example.mvc_mvp_donation
-
 class Controller {
 
-// comunica con el Model
-
-    private val model  : DonationModel
+    private val model: DonationModel
 
     init {
         model = DonationModel()
     }
 
-    // llamar la funcion model guardar
-
-    fun saveDonation (amount:String):Boolean{
-    return  model.saveDonation(amount)
-
+    // Llama al modelo para ingresar dinero
+    fun deposit(amount: String): Boolean {
+        return model.deposit(amount)
     }
 
+    // Llama al modelo para retirar dinero
+    fun withdraw(amount: String): Boolean {
+        return model.withdraw(amount)
+    }
 
-
-    // llamar la funcion model mostrar donaciones
-
-    fun totalDonation():  Int{
-        return  model.getDonationAmount()
+    // Llama al modelo para obtener el saldo
+    fun getBalance(): Int {
+        return model.getBalance()
     }
 }

@@ -1,52 +1,30 @@
-package com.example.mvc_mvp_donation
-
 class DonationModel {
-
     private var totalAmount: Int = 0
 
-
-
-    init {
-        this.totalAmount =0
-    }
-
-    // para guardar donaciones
-
-    fun saveDonation( donation : String): Boolean {
-        // convirtiendo de String a int
-        val amount = donation.toIntOrNull()
-
-        if( amount  != null  && amount >0){
-
-            totalAmount += amount
+    // Método para ingresar dinero
+    fun deposit(amount: String): Boolean {
+        val depositAmount = amount.toIntOrNull()
+        return if (depositAmount != null && depositAmount > 0) {
+            totalAmount += depositAmount
+            true
+        } else {
+            false
         }
-        return  false
     }
 
-
-    fun getDonationAmount(): Int{
-        return  totalAmount
-    }
-
-
-    // mvp
-
-    fun chekAmount(): String{
-
-        if(totalAmount >= 200 && totalAmount<=500){
-
-            return "#F31A1A"
+    // Método para retirar dinero
+    fun withdraw(amount: String): Boolean {
+        val withdrawAmount = amount.toIntOrNull()
+        return if (withdrawAmount != null && withdrawAmount > 0 && withdrawAmount <= totalAmount) {
+            totalAmount -= withdrawAmount
+            true
+        } else {
+            false
         }
-        if(totalAmount >= 500 && totalAmount<=1000){
-
-            return "#FFB33"
-        }
-
-        return "#58FF11"
-
     }
 
-
-
-
+    // Método para obtener el saldo
+    fun getBalance(): Int {
+        return totalAmount
+    }
 }
