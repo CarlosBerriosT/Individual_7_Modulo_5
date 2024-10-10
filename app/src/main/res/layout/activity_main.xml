@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -9,34 +10,32 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="411dp"
-        android:layout_height="731dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <!-- Saludo de bienvenida -->
-
-        <!-- Muestra el saldo actual -->
         <TextView
             android:id="@+id/tvWelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="32dp"
             android:text="Bienvenido a tu Banco"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Muestra el saldo actual -->
         <TextView
             android:id="@+id/tvBalance"
-            android:layout_width="326dp"
-            android:layout_height="41dp"
+            android:layout_width="332dp"
+            android:layout_height="69dp"
             android:layout_marginTop="16dp"
             android:text="Saldo: 0"
             android:textAlignment="center"
@@ -49,8 +48,8 @@
         <!-- Texto para la cantidad a ingresar o retirar -->
         <TextView
             android:id="@+id/tvAmountLabel"
-            android:layout_width="306dp"
-            android:layout_height="50dp"
+            android:layout_width="315dp"
+            android:layout_height="72dp"
             android:layout_marginTop="16dp"
             android:text="Ingrese una cantidad"
             android:textAlignment="center"
@@ -63,8 +62,8 @@
         <!-- Campo de entrada de la cantidad -->
         <EditText
             android:id="@+id/etAmount"
-            android:layout_width="323dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="Ingrese el monto"
@@ -74,81 +73,64 @@
             app:layout_constraintTop_toBottomOf="@id/tvAmountLabel" />
 
         <!-- Botón para ver el saldo -->
-
-        <!-- Botón para ingresar dinero -->
-
-        <!-- Botón para retirar dinero -->
-
-        <!-- Botón para salir de la aplicación -->
-
         <Button
             android:id="@+id/btnVerSaldo"
             android:layout_width="184dp"
             android:layout_height="64dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/design_default_color_error"
+            android:backgroundTint="@color/design_default_color_primary"
             android:text="Ver Saldo"
             android:textAlignment="center"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etAmount"
-            app:layout_constraintVertical_bias="0.058" />
+            app:layout_constraintTop_toBottomOf="@id/etAmount" />
 
+        <!-- Botón para ingresar dinero -->
         <Button
             android:id="@+id/btnIngresarDinero"
             android:layout_width="184dp"
             android:layout_height="64dp"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="@color/design_default_color_error"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/design_default_color_secondary"
             android:text="Ingresar Dinero"
             android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnVerSaldo"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@id/btnVerSaldo" />
 
+        <!-- Botón para retirar dinero -->
         <Button
             android:id="@+id/btnSacarDinero"
             android:layout_width="184dp"
             android:layout_height="64dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="@color/design_default_color_error"
             android:text="Sacar Dinero"
             android:textAlignment="center"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnIngresarDinero"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@id/btnIngresarDinero" />
 
+        <!-- Botón para salir de la aplicación -->
         <Button
             android:id="@+id/btnSalir"
             android:layout_width="184dp"
             android:layout_height="64dp"
-            android:backgroundTint="@color/design_default_color_error"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@android:color/darker_gray"
             android:text="Salir"
             android:textAlignment="center"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSacarDinero"
-            app:layout_constraintVertical_bias="0.247" />
+            app:layout_constraintTop_toBottomOf="@id/btnSacarDinero" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
